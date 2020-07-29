@@ -10,10 +10,10 @@
 5. Modify the following command by replacing `<REPLACE THIS WITH YOUR youtube-dl DIRECTORY>` with folder where you are storing `youtube-dl.exe` and then run the command in the cmd window by pasting the command into the cmd window and pressing enter
    
 ```
-setx /M PATH "%PATH;<REPLACE THIS WITH YOUR youtube-dl DIRECTORY>"
+setx /M PATH "%PATH%;<REPLACE THIS WITH YOUR youtube-dl DIRECTORY>"
 ```
 Example:
-If you were to store `youtube-dl.exe` in `C:\Program Files\youtube-dl` you would run the command `setx /M PATH "%PATH;C:\Program Files\youtube-dl"`
+If you were to store `youtube-dl.exe` in `C:\Program Files\youtube-dl` you would run the command `setx /M PATH "%PATH%;C:\Program Files\youtube-dl"`
 
 1. Close the cmd window
 2. Open new cmd window (not administrator mode)
@@ -27,7 +27,7 @@ If you were to store `youtube-dl.exe` in `C:\Program Files\youtube-dl` you would
 5. Do steps 4 and 5 from the the `Get youtube-dl` section but this time using the folder for where `ffmpeg.exe` is.
 
 Example:
-If you were to store the folder at `C:\Program Files\ffmpeg` then you would run `setx /M PATH "%PATH;C:\Program Files\ffmpeg\bin`. `ffmpeg.exe` should be located in `C:\Program Files\ffmpeg\bin`.
+If you were to store the folder at `C:\Program Files\ffmpeg` then you would run `setx /M PATH "%PATH%;C:\Program Files\ffmpeg\bin`. `ffmpeg.exe` should be located in `C:\Program Files\ffmpeg\bin`.
 6. You should now be able to run the command `ffmpeg -version`.
 
 ## Using youtube-dl
@@ -96,6 +96,12 @@ You can create scheduled tasks to periodically run your archival commands to sta
 ## FAQ
 ### What -f option do I need to pass to get the highest quality video and audio?
 None. New versions of youtube-dl will automatically pick the best quality available when no -f option is presented.
+
+### How do I download members only videos?
+1. Be a member.
+2. Add authentication flags to the command https://github.com/ytdl-org/youtube-dl/blob/master/README.md#authentication-options
+
+Complete instructions will be coming.
 
 ### How do I... ?
 Read the manuals
