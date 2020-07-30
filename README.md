@@ -1,5 +1,7 @@
 # Youtube Archive Tutorial
 
+This tutorial covers setting up and using `youtube-dl` to download videos, playlists and channels.
+
 ## Windows Setup
 ### Get youtube-dl
 1. Go to https://youtube-dl.org/
@@ -42,7 +44,11 @@ youtube-dl https://www.youtube.com/watch?v=pFgUluV_00s -i
 Download to a specific directory and use the video title as the file name. Replace the directory path `C:\Users\anon\Downloads\` with the path to the directory you want to download it to.
 ```
 youtube-dl https://www.youtube.com/watch?v=pFgUluV_00s -i -o "C:\Users\anon\Downloads\%(title)s.%(ext)s"
-``` 
+```
+Download a video to a specific directory along with metadata, video description embeded in the comment property as well as in a file, and the youtube thumbnail.
+```
+youtube-dl https://www.youtube.com/watch?v=pFgUluV_00s -i --add-metadata --write-thumbnail --write-description -o "C:\Users\anon\Downloads\[%(uploader)s][%(upload_date)s] %(title)s (%(id)s).%(ext)s"
+```
 
 ### Download a playlist
 1. Open cmd
@@ -76,9 +82,9 @@ youtube-dl https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A/playlists -r
 In this example you will download every video uploaded by the channel into a single folder. This will not include videos uploaded by other channels that have been included in playlists of your target channel. This means you may miss out on collabs such as duet songs. Unlisted videos will not be downloaded. Members only videos will not be downloaded. The videos will be downloaded with file names in the following format `[ChannelName][Upload Date] Video Title (Youtube video id).mkv`. Example: `[anon ch][20201231] anon sings (oqbyL3JRaHo).mkv`
 1. Create a folder for the channel you want to target.
 2. Open cmd
-3. Run the following `youtube-dl` command, replacing the channel url with the channel url of your choice. Replace the path `C:\Users\anon\Desktop\comet` with to folder you created for the channel. The speed is limited to 1MB per second, you can change it accordingly or remove `-r 1M` entirely to disable the throttling. Examples of some speeds (50K, 4.2M). `--add-metadata` will add the video description to the downloaded video's comment property and set the date modified of the file to the date it was uploaded.
+3. Run the following `youtube-dl` command, replacing the channel url with the channel url of your choice. Replace the path `C:\Users\anon\Desktop\comet` with to folder you created for the channel. The speed is limited to 1MB per second, you can change it accordingly or remove `-r 1M` entirely to disable the throttling. Examples of some speeds (50K, 4.2M). `--add-metadata` will add the video description to the downloaded video's comment property and set the date modified of the file to the date it was uploaded. `--write-info-json` will create a file with some information that might be useful later on. `--write-thumbnail` will download the image that is used as the thumbnail for the video. `--write-description` will create a file with the video description in it.
 ```
-youtube-dl https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A -r 1M --add-metadata --download-archive "C:\Users\anon\Desktop\comet\archive.txt" -i -o "C:\Users\anon\Desktop\comet\[%(uploader)s][%(upload_date)s] %(title)s (%(id)s).%(ext)s"
+youtube-dl https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A -r 1M --add-metadata --write-info-json --write-thumbnail --write-description --download-archive "C:\Users\anon\Desktop\comet\archive.txt" -i -o "C:\Users\anon\Desktop\comet\[%(uploader)s][%(upload_date)s] %(title)s (%(id)s).%(ext)s"
 ```
 
 To get a more complete collection of the channel will require some ingenuity on your part. You can download all the play lists on the channel and then run the command command for archiving the channel to download all the videos that are not in a playlist on the channel. Long as `youtube-dl` command targets the same archive file for the `--download-archive FILE`, it will not download a video already listed in the archive file. 
