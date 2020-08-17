@@ -32,7 +32,21 @@ Example:
 If you were to store the folder at `C:\Program Files\ffmpeg` then you would run `setx /M PATH "%PATH%;C:\Program Files\ffmpeg\bin`. `ffmpeg.exe` should be located in `C:\Program Files\ffmpeg\bin`.
 6. You should now be able to run the command `ffmpeg -version`.
 
+### Get AtomicParsley
+This is optional, it will allow you to create `.mp4` files with thumbnails from the youtube video. Currently this guide does not make use of `AtomicParsley`.
+1. Go to http://atomicparsley.sourceforge.net/
+2. Download latest version
+3. Extract the zip
+4. Inside the extracted files, copy the folder `AtomicParley-win32-0.9.0` to a permanent location. You may want to rename the folder to `AtomicParsley`.
+5.  Do steps 4 and 5 from the the `Get youtube-dl` section but this time using the folder for where `AtomicParsley.exe` is.
+
+Example: 
+If you were to store the folder at `C:\Program Files\AtomicParsley` then you would run `setx /M PATH "%PATH%;C:\Program Files\AtomicParsley`. `AtomicParsley.exe` should be located in `C:\Program Files\AtomicParsley`.
+**6**. You should now be able to run the command `AtomicParsley`.
+
 ## Using youtube-dl
+The following examples download as `.mkv` files or `.mp4` files. See the FAQ section below on the difference. It is recommended to do use the `.mp4` version of the command for most videos and `.mkv` for content with video resolution higher than `1080p` and music videos.
+
 ### Download a single video
 1. Open cmd
 2. Run one of the following `youtube-dl` commands after replacing the youtube link with a link to the video you want to download.
@@ -48,6 +62,10 @@ youtube-dl https://www.youtube.com/watch?v=pFgUluV_00s -i -o "C:\Users\anon\Down
 Download a video to a specific directory along with metadata, video description embeded in the comment property as well as in a file, and the youtube thumbnail.
 ```
 youtube-dl https://www.youtube.com/watch?v=pFgUluV_00s -i --add-metadata --write-thumbnail --write-description -o "C:\Users\anon\Downloads\[%(uploader)s][%(upload_date)s] %(title)s (%(id)s).%(ext)s"
+```
+Same as the above but as an `.mp4` file.
+```
+youtube-dl https://www.youtube.com/watch?v=pFgUluV_00s -i -f bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output-format mp4 --add-metadata --write-thumbnail --write-description -o "C:\Users\anon\Downloads\[%(uploader)s][%(upload_date)s] %(title)s (%(id)s).%(ext)s"
 ```
 
 ### Download a playlist
@@ -67,6 +85,10 @@ Same as the scenario above but saves information about which files have already 
 ```
 youtube-dl https://www.youtube.com/playlist?list=PLAo9RlHR2tDZwddeEyp9nTfpaFB58DrXd --download-archive "C:\Users\anon\Desktop\archives\comet_originals_playlist.txt" -i -o "C:\Users\anon\Desktop\%(playlist)s\%(playlist_index)s - %(title)s.%(ext)s"
 ```
+Same as the scenario above but outputs an `.mp4` file.
+```
+youtube-dl https://www.youtube.com/playlist?list=PLAo9RlHR2tDZwddeEyp9nTfpaFB58DrXd --download-archive "C:\Users\anon\Desktop\archives\comet_originals_playlist.txt" -i -f bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output-format mp4 -o "C:\Users\anon\Desktop\%(playlist)s\%(playlist_index)s - %(title)s.%(ext)s"
+```
 
 #### Download all playlists from a channel
 In this example you will create a folder for the channel and all the playlists will be downloaded to their own folders inside the channel folder. An archive file is going to be used to prevent redownloading if `youtube-dl` stops working (such as your computer going to sleep). Because there is only one archive file, any video that shows up in more than one playlist will only be downloaded to the first playlist downloaded that contains the video. If you do not want this behavior, then refer to instructions for downloading specific playlists and run the commands for each of the playlists in the channel. Generally, videos are not repeated between play lists on their channels. The download speed will also be controllable.
@@ -77,6 +99,10 @@ In this example you will create a folder for the channel and all the playlists w
 ```
 youtube-dl https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A/playlists -r 1M --download-archive "C:\Users\anon\Desktop\comet\archive.txt" -i -o "C:\Users\anon\Desktop\comet\%(playlist)s\%(playlist_index)s - %(title)s.%(ext)s"
 ```
+Same as the scenario above but outputs an `.mp4` file.
+```
+youtube-dl https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A/playlists -r 1M --download-archive "C:\Users\anon\Desktop\comet\archive.txt" -i -f bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output-format mp4 -o "C:\Users\anon\Desktop\comet\%(playlist)s\%(playlist_index)s - %(title)s.%(ext)s"
+```
 
 #### Archiving a channel
 In this example you will download every video uploaded by the channel into a single folder. This will not include videos uploaded by other channels that have been included in playlists of your target channel. This means you may miss out on collabs such as duet songs. Unlisted videos will not be downloaded. Members only videos will not be downloaded. The videos will be downloaded with file names in the following format `[ChannelName][Upload Date] Video Title (Youtube video id).mkv`. Example: `[anon ch][20201231] anon sings (oqbyL3JRaHo).mkv`
@@ -85,6 +111,10 @@ In this example you will download every video uploaded by the channel into a sin
 3. Run the following `youtube-dl` command, replacing the channel url with the channel url of your choice. Replace the path `C:\Users\anon\Desktop\comet` with to folder you created for the channel. The speed is limited to 1MB per second, you can change it accordingly or remove `-r 1M` entirely to disable the throttling. Examples of some speeds (50K, 4.2M). `--add-metadata` will add the video description to the downloaded video's comment property and set the date modified of the file to the date it was uploaded. `--write-info-json` will create a file with some information that might be useful later on. `--write-thumbnail` will download the image that is used as the thumbnail for the video. `--write-description` will create a file with the video description in it.
 ```
 youtube-dl https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A -r 1M --add-metadata --write-info-json --write-thumbnail --write-description --download-archive "C:\Users\anon\Desktop\comet\archive.txt" -i -o "C:\Users\anon\Desktop\comet\[%(uploader)s][%(upload_date)s] %(title)s (%(id)s).%(ext)s"
+```
+Same as the scenario above but outputs an `.mp4` file.
+```
+youtube-dl https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A -r 1M --add-metadata --write-info-json --write-thumbnail --write-description --download-archive "C:\Users\anon\Desktop\comet\archive.txt" -i -f bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output-format mp4 -o "C:\Users\anon\Desktop\comet\[%(uploader)s][%(upload_date)s] %(title)s (%(id)s).%(ext)s"
 ```
 
 To get a more complete collection of the channel will require some ingenuity on your part. You can download all the play lists on the channel and then run the command command for archiving the channel to download all the videos that are not in a playlist on the channel. Long as `youtube-dl` command targets the same archive file for the `--download-archive FILE`, it will not download a video already listed in the archive file. 
@@ -102,6 +132,14 @@ You can create scheduled tasks to periodically run your archival commands to sta
 ## FAQ
 ### What -f option do I need to pass to get the highest quality video and audio?
 None. New versions of youtube-dl will automatically pick the best quality available when no -f option is presented.
+
+### What options do I need to pass to get the highest quality `.mp4`?
+`-f bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output-format mp4` You can add this after the `-i` on any of the above commands.
+
+### What difference is there between the highest quality `.mp4` and `.mkv`?
+Using `.mkv` will get access to `48kHz Opus audio` if it is available while `.mp4` will get `44.1kHZ AAC audio`. Using `.mkv` will get access to higher quality visual streams and resolutions above `1080p` if they are available while `.mp4` will be limited to `1080p`*. There are only a handful of videos that are above `1080p` and most are short music videos as opposed to long live streams.
+
+*These limitations are due to the streams available from youtube and container type that can contain the streams.
 
 ### How do I download members only videos?
 1. Be a member.
