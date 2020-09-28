@@ -142,6 +142,9 @@ youtube-dl https://www.youtube.com/watch?v=TEoslCqshuQ -i --cookies C:\Users\ano
 
 You may find that sometimes authentication will fail. This is most likely due to old cookies. Simply get new cookies and replace your current cookie file.
 
+### Download a live stream as it is occuring
+See [Download a single video](#download-a-single-video) and [Download a members only video](#download-a-members-only-video). Using a url for a livestream will download the stream in real time starting from the moment the command is started. You can end the download at any time by pressing `Ctrl + C` or let it end on its own when the stream ends. Do note that this will not download anything before when you started the command.
+
 ## FAQ
 ### What -f option do I need to pass to get the highest quality video and audio?
 None. New versions of youtube-dl will automatically pick the best quality available when no -f option is presented.
