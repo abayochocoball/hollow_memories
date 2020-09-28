@@ -154,12 +154,6 @@ Using `.mkv` will get access to `48kHz Opus audio` if it is available while `.mp
 
 *These limitations are due to the streams available from youtube and container type that can contain the streams.
 
-### How do I download members only videos?
-1. Be a member.
-2. Add authentication flags to the command https://github.com/ytdl-org/youtube-dl/blob/master/README.md#authentication-options
-
-Complete instructions will be coming.
-
 ### How do I... ?
 Read the manuals
 1. https://github.com/ytdl-org/youtube-dl/blob/master/README.md
