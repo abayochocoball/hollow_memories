@@ -133,7 +133,7 @@ You can create scheduled tasks to periodically run your archival commands to sta
 In this example we will download a single members only video.
 1. Have access to membership for the channel.
 2. Install the plugin `cookies.txt` [FireFox](https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/) [Chrome](https://chrome.google.com/webstore/detail/cookiestxt/njabckikapfpffapmjgojcnbfjonfjfg). This will let us extract cookies from youtube which will be used to authenticate `youtube-dl`.
-3. Log in to youtube.
+3. Log into youtube.
 4. Click on the `cookies.txt` plugin in the top right hand corner of the browser and get cookies for `Current Site`. Save the cookies to a location of your choice. In this example we will use `C:\Users\anon\Desktop\youtube-cookies.txt`
 5. Follow the steps from [Download a single video](#download-a-single-video) and add `--cookies C:\Users\anon\Desktop\youtube-cookies.txt` to any of the commands . Example for downloading the video to the current directory
 ```
