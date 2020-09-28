@@ -90,7 +90,7 @@ Same as the scenario above but outputs an `.mp4` file.
 youtube-dl https://www.youtube.com/playlist?list=PLAo9RlHR2tDZwddeEyp9nTfpaFB58DrXd --download-archive "C:\Users\anon\Desktop\archives\comet_originals_playlist.txt" -i -f bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output-format mp4 -o "C:\Users\anon\Desktop\%(playlist)s\%(playlist_index)s - %(title)s.%(ext)s"
 ```
 
-#### Download all playlists from a channel
+### Download all playlists from a channel
 In this example you will create a folder for the channel and all the playlists will be downloaded to their own folders inside the channel folder. An archive file is going to be used to prevent redownloading if `youtube-dl` stops working (such as your computer going to sleep). Because there is only one archive file, any video that shows up in more than one playlist will only be downloaded to the first playlist downloaded that contains the video. If you do not want this behavior, then refer to instructions for downloading specific playlists and run the commands for each of the playlists in the channel. Generally, videos are not repeated between play lists on their channels. The download speed will also be controllable.
 
 1. Create a folder for the channel you want to target.
@@ -104,7 +104,7 @@ Same as the scenario above but outputs an `.mp4` file.
 youtube-dl https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A/playlists -r 1M --download-archive "C:\Users\anon\Desktop\comet\archive.txt" -i -f bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output-format mp4 -o "C:\Users\anon\Desktop\comet\%(playlist)s\%(playlist_index)s - %(title)s.%(ext)s"
 ```
 
-#### Archiving a channel
+### Archiving a channel
 In this example you will download every video uploaded by the channel into a single folder. This will not include videos uploaded by other channels that have been included in playlists of your target channel. This means you may miss out on collabs such as duet songs. Unlisted videos will not be downloaded. Members only videos will not be downloaded. The videos will be downloaded with file names in the following format `[ChannelName][Upload Date] Video Title (Youtube video id).mkv`. Example: `[anon ch][20201231] anon sings (oqbyL3JRaHo).mkv`
 1. Create a folder for the channel you want to target.
 2. Open cmd
@@ -128,6 +128,19 @@ Livestreams can be captured as they are airing.
 You can create scheduled tasks to periodically run your archival commands to stay up to date automatically. 
 
 `youtube-dl` also has options to download the thumbnail image and using the post `youtube-dl`'s post processing options you can run `ffmpeg` to add the thumbnail as cover art for the `.mkv` video.
+
+### Download a Members Only Video
+In this example we will download a single members only video.
+1. Have access to membership for the channel.
+2. Install the plugin `cookies.txt` [FireFox](https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/) [Chrome](https://chrome.google.com/webstore/detail/cookiestxt/njabckikapfpffapmjgojcnbfjonfjfg). This will let us extract cookies from youtube which will be used to authenticate `youtube-dl`.
+3. Log in to youtube.
+4. Click on the `cookies.txt` plugin in the top right hand corner of the browser and get cookies for `Current Site`. Save the cookies to a location of your choice. In this example we will use `C:\Users\anon\Desktop\youtube-cookies.txt`
+5. Follow the steps from [Download a single video](#download-a-single-video) and add the following to any of the commands `--cookies C:\Users\anon\Desktop\youtube-cookies.txt`. Example for downloading the video the current directory
+```
+youtube-dl https://www.youtube.com/watch?v=TEoslCqshuQ -i --cookies C:\Users\anon\Desktop\youtube-cookies.txt
+```
+
+You may find that sometimes authentication will fail. This is most likely due to old cookies. Simply get new cookies and replace your current cookie file.
 
 ## FAQ
 ### What -f option do I need to pass to get the highest quality video and audio?
