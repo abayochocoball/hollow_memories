@@ -129,13 +129,13 @@ You can create scheduled tasks to periodically run your archival commands to sta
 
 `youtube-dl` also has options to download the thumbnail image and using the post `youtube-dl`'s post processing options you can run `ffmpeg` to add the thumbnail as cover art for the `.mkv` video.
 
-### Download a Members Only Video
+### Download a members only video
 In this example we will download a single members only video.
 1. Have access to membership for the channel.
 2. Install the plugin `cookies.txt` [FireFox](https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/) [Chrome](https://chrome.google.com/webstore/detail/cookiestxt/njabckikapfpffapmjgojcnbfjonfjfg). This will let us extract cookies from youtube which will be used to authenticate `youtube-dl`.
 3. Log in to youtube.
 4. Click on the `cookies.txt` plugin in the top right hand corner of the browser and get cookies for `Current Site`. Save the cookies to a location of your choice. In this example we will use `C:\Users\anon\Desktop\youtube-cookies.txt`
-5. Follow the steps from [Download a single video](#download-a-single-video) and add the following to any of the commands `--cookies C:\Users\anon\Desktop\youtube-cookies.txt`. Example for downloading the video the current directory
+5. Follow the steps from [Download a single video](#download-a-single-video) and add `--cookies C:\Users\anon\Desktop\youtube-cookies.txt` to any of the commands . Example for downloading the video to the current directory
 ```
 youtube-dl https://www.youtube.com/watch?v=TEoslCqshuQ -i --cookies C:\Users\anon\Desktop\youtube-cookies.txt
 ```
