@@ -88,7 +88,7 @@ See:
 4. You can try opening the recording after you hit `Cntrl + C` once. If the file opens and plays, you can make a copy of the file and exit out of `youtube-dl` with a second `Cntrl + C`.
 
 ## Post Processsing
-The previous steps should have given you a working video file but it can be improved with a few simple steps. The following steps will convert the file to a real `.mp4` file [[note](#faq)], add a fancy thumbnail, save the video description with the recording, and give the recording a nice name. 
+The previous steps should have given you a working video file but it can be improved with a few simple steps. The following steps will convert the file to a real `.mp4` file [[note](#real-mp4)], add a fancy thumbnail, save the video description with the recording, and give the recording a nice name. 
 
 Before and After:
 
@@ -115,12 +115,12 @@ ffmpeg -i .\stream.mp4 -i .\stream.jpg -map 1 -map 0 -c copy -disposition:0 atta
 ```
 
 ## FAQ
-### What do you mean by a real .mp4
+### Real .mp4?
 The original recording from streamlink is saved with a `.mp4` file extension but it is actually a `MPEG-TS` format file. Most video players will still be able to play the recording since they understands the format and do not rely on the file extension. 
 
 The fake `.mp4` extension is convient for most people because their computers would be set up to use a video player to open files with the extension `.mp4`. Converting it to a real `.mp4` file will reduce the filesize without affecting quality.
 
-### My thumbnail was downloaded as a .webp file and that file format is not supported for thumbnails.
+### My thumbnail was downloaded as a .webp file and that file format is not supported for thumbnails, how do I convert it?
 Convert from `.webp` to `.jpg`. ffmpeg is wonderful.
 
 ```
