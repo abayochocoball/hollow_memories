@@ -91,7 +91,8 @@ See:
 ## Post Processsing
 The previous steps should have given you a working video file but it can be improved with a few simple steps. The following steps will convert the file to a real `.mp4` file [[note](#faq)], add a fancy thumbnail, save the video description with the recording, and give the recording a nice name. 
 
-Comparison:
+Before and After:
+
 ![Post Processing Difference](assets/post_process_difference.jpg)
 
 Do the following in PowerShell instead of command prompt. You can convert a command prompt into PowerShell by using the command `powershell` or open it directly from the start menu.
