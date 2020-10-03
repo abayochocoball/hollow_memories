@@ -23,7 +23,7 @@ streamlink --retry-streams 10 --player mpv -r stream.mp4 <stream_url> best
 ### Prerequisites
 1. Install [Streamlink](https://streamlink.github.io/install.html)
 2. Install [VLC](https://www.videolan.org/vlc/) or another video player of your choice.
-3. Optionally install [youtube-dl](https://youtube-dl.org/). A simple install and usage guide is provided [here](./README.md). This will be used to download the video description and thumbnail for a more complete archive.
+3. Optionally install [youtube-dl](https://youtube-dl.org/). A simple install and usage guide is provided [here](README.md). This will be used to download the video description and thumbnail for a more complete archive.
 
 ### Instructions
 The following are basic instructions for recording a livestream. The example will save the stream as `stream.mp4` in the folder `C:\Users\anon\stream_folder`. The highest quality stream will be used. 
@@ -56,7 +56,7 @@ streamlink --retry-streams 10 -r <name_to_save_stream_as>.mp4 <stream_url> best
 ```
 
 #### Use MPV or MPC instead of VLC for video playback.
-You may have to provide the full file path to the video player executable instead of just using the short name. to use the short name instead of the full file path, you have to add the file path of the video player to your `PATH`. Refer to the `setx` command [here](.\README.md#windows-setup)
+You may have to provide the full file path to the video player executable instead of just using the short name. to use the short name instead of the full file path, you have to add the file path of the video player to your `PATH`. Refer to the `setx` command [here](README.md#windows-setup)
 
 mpv:
 ```

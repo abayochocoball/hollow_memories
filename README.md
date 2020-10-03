@@ -143,7 +143,7 @@ youtube-dl https://www.youtube.com/watch?v=TEoslCqshuQ -i --cookies C:\Users\ano
 You may find that sometimes authentication will fail. This is most likely due to old cookies. Simply get new cookies and replace your current cookie file.
 
 ### Download a live stream as it is occuring
-See [this guide](.\archive_livestream.md).
+See [this guide](archiving_livestreams.md).
 
 ## FAQ
 ### What -f option do I need to pass to get the highest quality video and audio?
