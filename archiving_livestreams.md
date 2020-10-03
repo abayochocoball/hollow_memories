@@ -1,6 +1,6 @@
 # Archiving Livestreams
 
-This guide covers how to record livestreams as they are occuring. This is useful for streams that will not be archived later.
+This guide covers how to record livestreams as they are occurring. This is useful for streams that will not be archived later.
 
 ## Table of Contents
 
@@ -9,11 +9,11 @@ This guide covers how to record livestreams as they are occuring. This is useful
     * [Instructions](#instructions)
     * [Advanced Scenarios](#advanced-scenarios)
 2. [Recording Members Only Streams](#recording-members-only-streams)
-3. [Post Processing](#post-processsing)
+3. [Post Processing](#post-processing)
 4. [FAQ](#faq)
 
 ## Recording Regular Streams
-These instructions are for recording publicly availble streams using [Streamlink](https://streamlink.github.io/). Youtube-dl can record livestreams as well but Streamlink offers a better user experience for this scenario (it is common for people to corrupt their livestream recordings with youtube-dl). The following steps will record a stream while playing the video through VLC. Instructions for using alternative media players are provided under [Advanced Scenarios](#advanced-scenarios).
+These instructions are for recording publicly available streams using [Streamlink](https://streamlink.github.io/). Youtube-dl can record livestreams as well but Streamlink offers a better user experience for this scenario (it is common for people to corrupt their livestream recordings with youtube-dl). The following steps will record a stream while playing the stream through VLC. Instructions for using alternative media players are provided under [Advanced Scenarios](#advanced-scenarios).
 
 tl;dr
 ```
@@ -55,7 +55,7 @@ streamlink --retry-streams 10 -r <name_to_save_stream_as>.mp4 <stream_url> best
 ```
 
 #### Use MPV or MPC instead of VLC for video playback.
-You may have to provide the full file path to the video player executable instead of just using the short name. to use the short name instead of the full file path, you have to add the file path of the video player to your `PATH`. Refer to the `setx` command [here](README.md#windows-setup)
+You may have to provide the full file path to the video player executable instead of just using the short name. To use the short name instead of the full file path, you have to add the file path of the video player to your `PATH`. Refer to the `setx` command [here](README.md#windows-setup)
 
 mpv:
 ```
@@ -87,7 +87,7 @@ See:
 3. When the stream ends, press `Cntrl + C` to stop `youtube-dl`. **Only do this once** or you might corrupt your recording. It will take several minutes (less than 10 usually), to gracefully exit.
 4. You can try opening the recording after you hit `Cntrl + C` once. If the file opens and plays, you can make a copy of the file and exit out of `youtube-dl` with a second `Cntrl + C`.
 
-## Post Processsing
+## Post processing
 The previous steps should have given you a working video file but it can be improved with a few simple steps. The following steps will convert the file to a real `.mp4` file [[note](#real-mp4)], add a fancy thumbnail, save the video description with the recording, and give the recording a nice name. 
 
 Before and After:
@@ -118,7 +118,7 @@ ffmpeg -i .\stream.mp4 -i .\stream.jpg -map 1 -map 0 -c copy -disposition:0 atta
 ### Real .mp4?
 The original recording from streamlink is saved with a `.mp4` file extension but it is actually a `MPEG-TS` format file. Most video players will still be able to play the recording since they understands the format and do not rely on the file extension. 
 
-The fake `.mp4` extension is convient for most people because their computers would be set up to use a video player to open files with the extension `.mp4`. Converting it to a real `.mp4` file will reduce the filesize without affecting quality.
+The fake `.mp4` extension is convenient for most people because their computers would be set up to use a video player to open files with the extension `.mp4`. Converting it to a real `.mp4` file will reduce the file size without affecting quality.
 
 ### My thumbnail was downloaded as a .webp file and that file format is not supported for thumbnails, how do I convert it?
 Convert from `.webp` to `.jpg`. ffmpeg is wonderful.
