@@ -114,6 +114,8 @@ $description = [IO.File]::ReadAllText(".\stream.description")
 ffmpeg -i .\stream.mp4 -i .\stream.jpg -map 1 -map 0 -c copy -disposition:0 attached_pic -metadata comment=$description $($filename + ".mp4")
 ```
 
+[Script for the above](scripts/postprocess.ps1).
+
 ## FAQ
 ### Real .mp4?
 The original recording from streamlink is saved with a `.mp4` file extension but it is actually a `MPEG-TS` format file. Most video players will still be able to play the recording since they understands the format and do not rely on the file extension. 
