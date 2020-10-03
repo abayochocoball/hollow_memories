@@ -23,14 +23,14 @@ streamlink --retry-streams 10 --player mpv -r stream.mp4 <stream_url> best
 ### Prerequisites
 1. Install [Streamlink](https://streamlink.github.io/install.html)
 2. Install [VLC](https://www.videolan.org/vlc/) or another video player of your choice.
-3. Optionally install [youtube-dl](https://youtube-dl.org/). A simple install and usage guide is provided [here](README.md). This will be used to download the video description and thumbnail for a more complete archive.
+3. Optionally install [youtube-dl](https://youtube-dl.org/). A simple install and usage guide is provided [here](README.md). This will be used to download the stream's description and thumbnail for a more complete archive.
 
 ### Instructions
 The example will save the high quality stream available as `stream.mp4` in the folder `C:\Users\anon\stream_folder`.
 
-1. Create a folder for where you want to save the stream to.
-2. Open the command prompt. You copy and paste commands here and press enter to run them.
-    * Open start menu, search for command prompt.
+1. Create a folder for where you want to save the stream to. You may want to user a temporary folder and then manually move it to the final destination afterwards.
+2. Open the command prompt, you will run commands here by copying and pasting commands and pressing enter.
+    * Open the start menu and search for `command prompt`.
 3. Move to the folder where you want to save the stream to.
     * Command: ```cd "<path_to_folder_from_step_1>"```
     * Example: ```cd "C:\Users\anon\stream_folder"```
@@ -79,7 +79,7 @@ streamlink --retry-streams 10 -o <name_to_save_stream_as>.mp4 <stream_url> best
 ```
 
 ## Recording Members Only Streams
-Coming soon. Streamlink doesn't work since it does not support logging in to a youtube account. You will have to use youtube-dl.
+Full instructions coming. Streamlink doesn't work for members only streams since it does not support logging in to a youtube account. You will have to use youtube-dl.
 
 See:
 1. [Accessing members only content](README.md#Download-a-members-only-video)
@@ -87,29 +87,29 @@ See:
 3. When the stream ends, press `Cntrl + C` to stop `youtube-dl`. **Only do this once** or you might corrupt your recording. It will take several minutes (less than 10 usually), to gracefully exit.
 4. You can try opening the recording after you hit `Cntrl + C` once. If the file opens and plays, you can make a copy of the file and exit out of `youtube-dl` with a second `Cntrl + C`.
 
-## Post processing
-The previous steps should have given you a working video file but it can be improved with a few simple steps. The following steps will convert the file to a real `.mp4` file [[note](#real-mp4)], add a fancy thumbnail, save the video description with the recording, and give the recording a nice name. 
+## Post Processing
+The previous steps should have given you a working video file but it can be improved with a few simple steps. The following steps will convert the file to a real `.mp4` file [[note](#real-mp4)], add a fancy thumbnail, save the video description with the recording, and give the video a nice name. 
 
 Before and After:
 
 ![Post Processing Difference](assets/post_process_difference.jpg)
 
-Do the following in PowerShell instead of command prompt. You can convert a command prompt into PowerShell by using the command `powershell` or open it directly from the start menu.
-You will have to open a new command prompt/PowerShell while your previous command prompt is busy running Streamlink.
+Do the following in PowerShell instead of command prompt. You can convert a command prompt into PowerShell by using the command `powershell`.
+You will have to open a new command prompt for PowerShell while your previous command prompt is busy running Streamlink.
 
 1. Generate a nice filename to be used later. Example generated filename: `[Botan Ch.獅白ぼたん][20200830] 5期生より (fCqDv94ZeuA)`. You will want to do this step while the stream is still live.
 ```
 $filename = youtube-dl --write-description --skip-download -o "[%(uploader)s][%(upload_date)s] %(title)s (%(id)s)" --get-filename <stream_url>
 ``` 
-2. Download the livestream's description and thumbnail as `stream.description` and `stream.jpg` respectively. You will want to do this step while the stream is still live, once the stream ends and the archive is deleted, you will not have access to the description of thumbnail anymore.
+2. Download the livestream's description and thumbnail as `stream.description` and `stream.jpg` respectively. You will want to do this step while the stream is still live, once the livestream ends and the archive is deleted, you will not have access to the description nor the thumbnail anymore.
 ```
 youtube-dl --write-thumbnail --write-description --skip-download -o stream <stream_url>
 ```
-2. Store the livestream's description into variable `$description`.
+3. Store the livestream's description into variable `$description`.
 ```
 $description = [IO.File]::ReadAllText(".\stream.description")
 ```
-3. Convert to `.mp4`, add thumbnail and add description to the video's comment.
+4. Convert to `.mp4`, add thumbnaill, add the description to the video's comment and save the new video with a formatted name.
 ```
 ffmpeg -i .\stream.mp4 -i .\stream.jpg -map 1 -map 0 -c copy -disposition:0 attached_pic -metadata comment=$description $($filename + ".mp4")
 ```
@@ -131,7 +131,7 @@ ffmpeg -i stream.webp stream.jpg
 ```
 youtube-dl -o - <stream_url>  best | tee stream.mp4 | mpv -
 ```
-You can get `tee` by installing [git](https://git-scm.com/downloads). This will probably not work in PowerShell.
+You can get `tee` by installing [git](https://git-scm.com/downloads). This will not work in PowerShell.
 
 ### Why not use AtomicParsley to add the thumbnail?
 AtomicParsley only records the first 255 characters of the video's comment. If you want to use it, do it before adding the comment.
