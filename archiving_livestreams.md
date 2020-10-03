@@ -13,7 +13,7 @@ This guide covers how to record livestreams as they are occuring. This is useful
 4. [FAQ](#faq)
 
 ## Recording Regular Streams
-This is to record publicly availble streams using [Streamlink](https://streamlink.github.io/). Youtube-dl works but Streamlink offers a better user experience for this scenario (it is common for people to corrupt their recordings with youtube-dl). The following steps will record a stream while playing the video through VLC. Instructions for using alternative media players are provided under [Advanced Scenarios](#advanced-scenarios).
+These instructions are for recording publicly availble streams using [Streamlink](https://streamlink.github.io/). Youtube-dl can record livestreams as well but Streamlink offers a better user experience for this scenario (it is common for people to corrupt their livestream recordings with youtube-dl). The following steps will record a stream while playing the video through VLC. Instructions for using alternative media players are provided under [Advanced Scenarios](#advanced-scenarios).
 
 tl;dr
 ```
@@ -26,20 +26,19 @@ streamlink --retry-streams 10 --player mpv -r stream.mp4 <stream_url> best
 3. Optionally install [youtube-dl](https://youtube-dl.org/). A simple install and usage guide is provided [here](README.md). This will be used to download the video description and thumbnail for a more complete archive.
 
 ### Instructions
-The following are basic instructions for recording a livestream. The example will save the stream as `stream.mp4` in the folder `C:\Users\anon\stream_folder`. The highest quality stream will be used. 
+The example will save the high quality stream available as `stream.mp4` in the folder `C:\Users\anon\stream_folder`.
 
 1. Create a folder for where you want to save the stream to.
 2. Open the command prompt. You copy and paste commands here and press enter to run them.
     * Open start menu, search for command prompt.
 3. Move to the folder where you want to save the stream to.
-    * Command: ```cd "path_to_folder_from_step_1"```
+    * Command: ```cd "<path_to_folder_from_step_1>"```
     * Example: ```cd "C:\Users\anon\stream_folder"```
 4. Start recording the stream
    * Command: ```streamlink -r <name_to_save_stream_as>.mp4 <stream_url> best```
    * Example: ```streamlink -r stream.mp4 https://www.youtube.com/watch?v=RPdUErEiRbk best```
 
 ### Advanced Scenarios
-These are streamlink commands for various scenarios.
 
 #### Save the stream in 720p.
 This is useful when you do not have enough bandwidth for 1080p streams.
@@ -130,7 +129,7 @@ ffmpeg -i stream.webp stream.jpg
 
 ### I really really want to use youtube-dl, how do I record and playback at the same time?
 ```
-youtube-dl -o - stream_url  best | tee stream.mp4 | mpv -
+youtube-dl -o - <stream_url>  best | tee stream.mp4 | mpv -
 ```
 You can get `tee` by installing [git](https://git-scm.com/downloads). This will probably not work in PowerShell.
 
