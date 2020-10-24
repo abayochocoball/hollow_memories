@@ -3,6 +3,7 @@
 This tutorial covers setting up and using `youtube-dl` to download videos, playlists and channels.
 
 ## Windows Setup
+**Currently youtube-dl has been [taken down from github](https://github.com/github/dmca/blob/master/2020/10/2020-10-23-RIAA.md), will update with alternative download soon.**
 ### Get youtube-dl
 1. Go to https://youtube-dl.org/
 2. Start the download by clicking on `youtube-dl.exe` on the webpage.
