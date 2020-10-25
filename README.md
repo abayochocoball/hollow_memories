@@ -3,7 +3,6 @@
 This tutorial covers setting up and using `youtube-dl` to download videos, playlists and channels.
 
 ## Windows Setup
-**Currently youtube-dl has been [taken down from github](https://github.com/github/dmca/blob/master/2020/10/2020-10-23-RIAA.md), which is why the instructions link to archive.org.**
 ### Get youtube-dl
 1. Go to https://yt-dl.org/download.html
 2. Download youtube-dl by clicking on windows exe.
@@ -160,5 +159,5 @@ Using `.mkv` will get access to `48kHz Opus audio` if it is available while `.mp
 
 ### How do I... ?
 Read the manuals
-1. https://github.com/ytdl-org/youtube-dl/blob/master/README.md
+1. https://github.com/ytdl-org/youtube-dl/blob/master/README.md (currently down due to dmca, refer to https://github.com/github/dmca/tree/416da574ec0df3388f652e44f7fe71b1e3a4701f)
 2. https://ffmpeg.org/documentation.html
