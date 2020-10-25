@@ -140,6 +140,6 @@ AtomicParsley only records the first 255 characters of the video's comment. If y
 
 ### How do I... ?
 Read the manuals
-1. https://github.com/ytdl-org/youtube-dl/blob/master/README.md
+1. https://github.com/ytdl-org/youtube-dl/blob/master/README.md (currently down due to dmca, refer to https://github.com/github/dmca/tree/416da574ec0df3388f652e44f7fe71b1e3a4701f)
 2. https://ffmpeg.org/documentation.html
 3. https://streamlink.github.io/cli.html
