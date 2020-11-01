@@ -79,13 +79,21 @@ streamlink --retry-streams 10 -o <name_to_save_stream_as>.mp4 <stream_url> best
 ```
 
 ## Recording Members Only Streams
-Full instructions coming. Streamlink doesn't work for members only streams since it does not support logging in to a youtube account. You will have to use youtube-dl.
+### Recommended: streamlink-auth.ps1 script
+This script will extract the right value out of a `cookies.txt` file and run `streamlink` with the arguments you provide it.
 
-See:
-1. [Accessing members only content](README.md#Download-a-members-only-video)
-2. [Record and watch with one download using youtube-dl](#i-really-really-want-to-use-youtube-dl-how-do-i-record-and-playback-at-the-same-time)
-3. When the stream ends, press `Cntrl + C` to stop `youtube-dl`. **Only do this once** or you might corrupt your recording. It will take several minutes (less than 10 usually), to gracefully exit.
-4. You can try opening the recording after you hit `Cntrl + C` once. If the file opens and plays, you can make a copy of the file and exit out of `youtube-dl` with a second `Cntrl + C`.
+0. Get a `cookies.txt` file. Refer to steps 1 to 4 [here](README.md#download-a-members-only-video)
+1. Copy [streamlink-auth.ps1](scripts/streamlink-auth.ps1) and save it as `streamlink-auth.ps1` where you installed `streamlink`.
+   * Default installation location is `C:\Program Files (x86)\Streamlink\bin`
+2. Open Powershell.
+   * Open the start menu (Windows key), type in powershell, open Windows Powershell
+3. Run the command `streamlink-auth COOKIES_TXT_FILE_PATH STREAMLINK_ARGUMENTS`
+   * Example: You want to watch https://www.youtube.com/watch?v=-hLmfV-wQKo and your `cookies.txt` file is located at `C:\Users\anon\Documents\cookies.txt`
+   * `streamlink-auth C:\Users\anon\Documents\cookies.txt https://www.youtube.com/watch?v=-hLmfV-wQKo best`
+   * If you are running into issues with `streamlink-auth` not found, then copy the script somewhere else, and navigate to that folder in Powershell using the command `cd <Path to folder containing script>` and try again.
+   
+### Directly with Streamlink
+The above script is simply extracting the `__Secure-3PSID` cookie for .youtube.com and setting the `--http-cookie` command line arguement as `--http-cookie __Secure-3PSID=<cookie value>`. The line in the `cookies.txt` you are looking for looks like `#HttpOnly_.youtube.com	TRUE	/	TRUE	1667272763	__Secure-3PSID	<Some random letters and numbers, this is the cookie value>`. If you use the same `cookies.txt` with `youtube-dl` then the line might not start with `#HttpOnly_`.
 
 ## Post Processing
 The previous steps should have given you a working video file but it can be improved with a few simple steps. The following steps will convert the file to a real `.mp4` file [[note](#real-mp4)], add a fancy thumbnail, save the video description with the recording, and give the video a nice name. 
