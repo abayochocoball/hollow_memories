@@ -59,7 +59,7 @@ Download to a specific directory and use the video title as the file name. Repla
 ```
 youtube-dl https://www.youtube.com/watch?v=pFgUluV_00s -i -o "C:\Users\anon\Downloads\%(title)s.%(ext)s"
 ```
-Download a video to a specific directory along with metadata, video description embeded in the comment property as well as in a file, and the youtube thumbnail.
+Download a video to a specific directory along with metadata, video description embedded in the comment property as well as in a file, and the youtube thumbnail.
 ```
 youtube-dl https://www.youtube.com/watch?v=pFgUluV_00s -i --add-metadata --write-thumbnail --write-description -o "C:\Users\anon\Downloads\[%(uploader)s][%(upload_date)s] %(title)s (%(id)s).%(ext)s"
 ```
@@ -73,7 +73,7 @@ youtube-dl https://www.youtube.com/watch?v=pFgUluV_00s -i -f bestvideo[ext=mp4]+
 2. Run one of the following `youtube-dl` commands after replacing the youtube playlist link with a link to the youtube playlist you want to download.
    
 
-Download a playlist to a folder of your choice wit hteh files in order of how they appear in the playlist. Replace `C:\Users\anon\Desktop\comet originals` with path to directory of your choice.
+Download a playlist to a folder of your choice with the files in order of how they appear in the playlist. Replace `C:\Users\anon\Desktop\comet originals` with path to directory of your choice.
 ```
 youtube-dl https://www.youtube.com/playlist?list=PLAo9RlHR2tDZwddeEyp9nTfpaFB58DrXd -i -o "C:\Users\anon\Desktop\comet originals\%(playlist_index)s - %(title)s.%(ext)s"
 ```
@@ -142,7 +142,7 @@ youtube-dl https://www.youtube.com/watch?v=TEoslCqshuQ -i --cookies C:\Users\ano
 
 You may find that sometimes authentication will fail. This is most likely due to old cookies. Simply get new cookies and replace your current cookie file.
 
-### Download a live stream as it is occuring
+### Download a live stream as it is occurring
 See [this guide](archiving_livestreams.md).
 
 ## FAQ
