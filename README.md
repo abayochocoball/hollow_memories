@@ -1,3 +1,6 @@
+# No longer actively maintained
+## Refer to https://github.com/Lytexx/hollow_memories
+
 # Youtube Archive Tutorial
 
 This tutorial covers setting up and using `youtube-dl` to download videos, playlists and channels.
